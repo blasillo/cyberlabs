@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  kali:
+    image: kalilinux/kali-rolling
+    container_name: kali
+    networks:
+      - lab_network
+    command: /bin/sh -c "apt-get update && apt-get install -y kali-tools-top10 && tail -f /dev/null"
+    tty: true
+
+  metasploitable:
+    image: tleemcjr/metasploitable2
+    container_name: metasploitable
+    networks:
+      - lab_network
+    tty: true
+
+networks:
+  lab_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24

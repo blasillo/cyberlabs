@@ -1,0 +1,12 @@
+docker network create vulnerable --attachable --subnet 10.10.10.0/24
+
+docker pull parrotsec/security:latest
+
+docker run --name parrot -it --hostname parrot --network vulnerable --ip="10.10.10.2" parrotsec/security:latest /bin/bash
+
+
+docker pull tleemcjr/metasploitable2
+
+docker run -it --network vulnerable --ip="10.10.10.101" --name metasploitable --hostname metasploitable2 tleemcjr/metasploitable2 bash
+
+docker run -d --name juiceshop --network vulnerable --ip="10.10.10.106" bkimminich/juice-shop
