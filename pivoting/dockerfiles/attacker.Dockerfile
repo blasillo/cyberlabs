@@ -1,4 +1,4 @@
-FROM phusion/baseimage:master
+FROM phusion/baseimage:noble-1.0.0
 
 LABEL maintainer="sauman"
 
