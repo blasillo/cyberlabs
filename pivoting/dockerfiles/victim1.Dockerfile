@@ -11,6 +11,6 @@ RUN apt install wget -y \
 
 WORKDIR /opt/sar2html-4.0.0/
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt --break-system-packages 
 
 CMD bash -c "./startWeb"
