@@ -13,8 +13,8 @@ const languages = [
         code: "en"
     },
     {
-        name: "T&uuml;rk&ccedil;e",
-        code: "tr"
+        name: "Castellano",
+        code: "es"
     },
     {
         name: "Fran&#xE7;ais",
@@ -26,12 +26,12 @@ var selectedLanguage = languages.find(x => x.code == (getCookie("lang") || "en")
 /** TRANSLATION **/
 const translate = {
     "goBack": {
-        "tr": "Geri D&ouml;n",
+        "es": "Volver",
         "en": "Go Back",
         "fr": "Retourner"
     },
     "sourceC": {
-        "tr": "Kaynak Kod",
+        "es": "Código fuente",
         "en": "Source Code",
         "fr": "Code Source"
     }

@@ -20,7 +20,7 @@ try {
     
 } catch (PDOException $e) {
     
-    echo 'Veri tabanı bağlantı hatası: '.$e;
+    echo 'Database connection error: '.$e;
 
 }
 ?>

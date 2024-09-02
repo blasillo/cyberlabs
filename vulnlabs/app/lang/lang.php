@@ -2,7 +2,7 @@
 
 function getLang() {
 
-$langs = array("en", "fr", "es");
+$langs = array("en", "es", "fr");
 
 if(!isset($_COOKIE["lang"])) {
     $lang = "en";
