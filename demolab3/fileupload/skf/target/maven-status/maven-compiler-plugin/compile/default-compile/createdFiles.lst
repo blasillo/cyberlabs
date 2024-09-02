@@ -1,0 +1,7 @@
+com/skf/labs/fileupload/FileUploadApplication.class
+com/skf/labs/fileupload/storage/FileSystemStorageService.class
+com/skf/labs/fileupload/storage/StorageProperties.class
+com/skf/labs/fileupload/storage/StorageFileNotFoundException.class
+com/skf/labs/fileupload/storage/StorageException.class
+com/skf/labs/fileupload/FileUploadController.class
+com/skf/labs/fileupload/storage/StorageService.class

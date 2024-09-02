@@ -1,0 +1,4 @@
+com/skf/labs/jwtsecret/JwtModel.class
+com/skf/labs/jwtsecret/JwtController.class
+com/skf/labs/jwtsecret/JwtSecretApplication.class
+com/skf/labs/jwtsecret/User.class
