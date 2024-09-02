@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  vulnlab:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    ports:
+      - "1337:80"
+    restart: always 
+    networks:
+      - vulnlab_network  # Añade el servicio a la red personalizada
+
+networks:
+  vulnlab_network:  # Definición de la red personalizada
+    driver: bridge  # Usa el driver por defecto 'bridge'
