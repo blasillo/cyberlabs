@@ -10,7 +10,7 @@ if(!isset($_COOKIE["lang"])) {
     if(in_array($_COOKIE["lang"],$langs)) {
         $lang = $_COOKIE["lang"];
     } else {
-        $lang = "en";
+        $lang = "es";
     }
     
 }

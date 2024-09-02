@@ -31,7 +31,7 @@ const translate = {
         "fr": "Retourner"
     },
     "sourceC": {
-        "es": "Código fuente",
+        "es": "Codigo fuente",
         "en": "Source Code",
         "fr": "Code Source"
     }
