@@ -1,7 +1,7 @@
-/skf/src/main/java/com/skf/labs/fileupload/FileUploadApplication.java
-/skf/src/main/java/com/skf/labs/fileupload/storage/StorageService.java
-/skf/src/main/java/com/skf/labs/fileupload/storage/StorageProperties.java
-/skf/src/main/java/com/skf/labs/fileupload/storage/StorageFileNotFoundException.java
-/skf/src/main/java/com/skf/labs/fileupload/storage/StorageException.java
-/skf/src/main/java/com/skf/labs/fileupload/storage/FileSystemStorageService.java
-/skf/src/main/java/com/skf/labs/fileupload/FileUploadController.java
+C:\desarrollo\cyberlabs\demolab3\fileupload\skf\src\main\java\com\skf\labs\fileupload\storage\StorageProperties.java
+C:\desarrollo\cyberlabs\demolab3\fileupload\skf\src\main\java\com\skf\labs\fileupload\FileUploadApplication.java
+C:\desarrollo\cyberlabs\demolab3\fileupload\skf\src\main\java\com\skf\labs\fileupload\storage\StorageException.java
+C:\desarrollo\cyberlabs\demolab3\fileupload\skf\src\main\java\com\skf\labs\fileupload\storage\FileSystemStorageService.java
+C:\desarrollo\cyberlabs\demolab3\fileupload\skf\src\main\java\com\skf\labs\fileupload\FileUploadController.java
+C:\desarrollo\cyberlabs\demolab3\fileupload\skf\src\main\java\com\skf\labs\fileupload\storage\StorageFileNotFoundException.java
+C:\desarrollo\cyberlabs\demolab3\fileupload\skf\src\main\java\com\skf\labs\fileupload\storage\StorageService.java
