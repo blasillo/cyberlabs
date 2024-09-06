@@ -1,0 +1,87 @@
+version: '3.8'
+
+networks:
+  externa:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
+  interna:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24
+
+services:
+  atacante:
+    image: parrotsec/core:latest  # Puedes usar una imagen con entorno gráfico preinstalado
+    networks:
+      - externa
+    tty: true
+    stdin_open: true
+    environment:
+      - DISPLAY=:1  # Configuración del display para el entorno gráfico
+    command: >
+      /bin/bash -c "
+      apt-get update && 
+      apt-get install -y xfce4 tigervnc-standalone-server websockify novnc &&
+      useradd -m parrot && 
+      echo 'parrot:password' | chpasswd &&  # Cambia 'password' por una contraseña segura
+      su - parrot -c 'vncserver :1 -geometry 1280x800 -depth 24 -localhost no' &&
+      websockify --web /usr/share/novnc/ 6080 localhost:5901 & 
+      while true; do sleep 1000; done"
+    ports:
+      - "6080:6080"  # Exponer puerto para noVNC (HTTP)
+      - "5901:5901"  # Exponer puerto VNC solo si es necesario
+
+  pasarela:
+    image: debian:latest
+    container_name: pasarela
+    networks:
+      - externa
+      - interna
+    cap_add:
+      - NET_ADMIN  # Necesario para ejecutar iptables
+    command: >
+      /bin/bash -c "
+      apt-get update && apt-get install -y iptables ssh && 
+      service ssh start && 
+      while true; do sleep 1000; done"
+    ports:
+      - "2222:22"
+
+  juicyshop:
+    image: bkimminich/juice-shop
+    networks:
+      - interna
+    ports:
+      - "3000:3000"
+  
+  wordpress:
+    image: wordpress:latest
+    networks:
+      - interna
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+
+  db:
+    image: mysql:5.7
+    networks:
+      - interna
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

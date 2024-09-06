@@ -1,0 +1,73 @@
+version: '3.8'
+
+networks:
+  externa:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
+  interna:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24
+
+services:
+  atacante:
+    image: parrotsec/core:latest
+    networks:
+      - externa
+    tty: true
+    stdin_open: true
+
+  pasarela:
+    image: debian:latest
+    container_name: pasarela
+    networks:
+      - externa
+      - interna
+    cap_add:
+      - NET_ADMIN  # Necesario para ejecutar iptables
+    command: >
+      /bin/bash -c "
+      apt-get update && apt-get install -y iptables ssh && 
+      service ssh start && 
+      while true; do sleep 1000; done"
+    ports:
+      - "2222:22"
+
+  juicyshop:
+    image: bkimminich/juice-shop
+    networks:
+      - interna
+    ports:
+      - "3000:3000"
+  
+  wordpress:
+    image: wordpress:latest
+    networks:
+      - interna
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+
+  db:
+    image: mysql:5.7
+    networks:
+      - interna
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
