@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  caddy:
+    build:
+      context: ./caddy
+      dockerfile: Dockerfile
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./ruleset:/ruleset
+      - audit:/audit
+    ports:
+      - 8080:80
+      
+      
+  juiceshop:
+    image: bkimminich/juice-shop
+
+
+volumes:
+  audit: {}
