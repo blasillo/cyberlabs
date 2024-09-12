@@ -148,11 +148,12 @@ $resources = getRes($vulnID);
             <div class="py-md-3">
               <hr class="mt-1 text-1000" />
             </div>
-
+            <!--
             <div class="row mx-md-5 px-md-5 d-flex justify-content-evenly">
                   <div class="col-6 col-lg-auto mt-5 mt-lg-0"><img src="../public/assets/img/gallery/brands/sibervatangray.png" alt="Yavuzlar" style="height:35px;" /></div>
                   <div class="col-6 col-lg-auto mt-5 mt-lg-0"><img src="../public/assets/img/gallery/brands/yavuzlargray.png" alt="Siber Vatan" style="height:35px;" /></div>
              </div>
+            -->
           </div>
           <!-- end of .container-->
         </section>
@@ -179,9 +180,10 @@ $resources = getRes($vulnID);
             </div>
        
             <div class="col-xl-5 pt-2 pt-xl-0 text-center text-xl-end">
-                <p class="mb-0">&copy; <!--
+                <p class="mb-0"><!--&copy; 
                   <a class="text-300" href="https://siberyavuzlar.com/" target="_blank"> Yavuzlar Web
-                        Security</a>--></p>
+                        Security</a>-->
+                      </p>
             </div>
         </div>
     </div>
